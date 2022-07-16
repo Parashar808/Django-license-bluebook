@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    table {
+        border: 8px outset;
+        border-radius: 10px;
+        border-spacing: 10px;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    th,
+    td {
+        padding: 5px;
+        border: 1px solid;
+    }
+    
+</style>
+
+<body>
+    <form method="get">
+        {% csrf_token  %}
+
+        <input type="text" name="search">
+        
+        <input type="submit" value="search" >
+
+
+    </form>     
+       
+    <div style="text-align:center ;"><h1> License Fines</h1> </div>
+
+    <table  style="margin: 0px auto;">
+        <thead>
+            <tr>
+                <th> Fine id</th>
+                <th>Amount</th>
+                
+                <th>Name</th>
+                <th colspan="2">Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for Fine in fines %}
+            <tr>
+                <td>{{Fine.Fine_Id}}</td>
+                <td>{{Fine.amount}}</td>
+                <td>{{Fine.name}}</td>
+               
+
+                <td><a href="{% url 'update1' Fine.id %}">edit</a></td>
+
+
+           
+                <td><a href="/removea/{{Fine.pk}}">Delete</a>
+                </td>
+
+
+                               
+
+                    
+                    
+                
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+    
+    
+
+    <a href="{% url 'create1' %}">Insert new fine</a>
+    <br/>
+    
+
+
+    
+
+</body>
+
+</html>

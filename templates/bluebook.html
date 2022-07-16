@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height:300px ;
+            width:300px;
+        }
+    </style>
+</head>
+<body>
+    <form method="get">
+        {% csrf_token  %}
+
+        <input type="text" name="search1">
+        
+        <input type="submit" >
+
+
+    </form>     
+
+    {% for book in bluebook %}
+    <p>{{book.name}}</p>
+    <p>{{book.book_number}}</p>
+    <p>{{book.bike_number}}</p>
+    <p>{{book.issue_date}}</p>
+    <p>{{book.expiry_date}}</p>
+    <img src="{{book.photo.url}}" />
+    <p>{{book.tax_status}}</p>
+
+
+
+
+    
+
+    {% endfor %}
+    
+    
+
+</body>
+</html>

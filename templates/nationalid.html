@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+     </title>
+
+    
+</head>
+<body>
+    
+    <table> 
+        <header>
+            <a href="license">license</a>
+            <a href="bluebook">bluebook</a>
+            <a href="Fine">Fine</a>
+
+    
+        </header>
+        <form method="GET">
+            {% csrf_token %}
+            <input type="text" name="search">
+            <input type="button" value="submit">
+    
+    
+        </form>
+    
+        <tr>
+            <th>National-id</th>
+            <th>Name</th>
+            <th>License Number</th>
+            <th>Bluebook Number</th>
+        </tr>
+    {% for nat in n1 %}
+           
+        <tr>
+            <td>{{nat.id_number}}</td>
+            <td>{{nat.name}}</td>
+            <td>{{nat.license_number}}</td>
+            <td>{{nat.bluebook_number}}</td>
+        </tr>
+    {% endfor %}
+
+        </table>
+            
+
+    
+    
+
+</body>
+</html>
