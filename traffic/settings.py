@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'traffic.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'egov',
+        'NAME': 'EGOV',
         'USER':'postgres',
         'PASSWORD':'1234',
         'HOST':'localhost'
