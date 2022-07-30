@@ -21,7 +21,7 @@ class license(models.Model):
     issue=models.CharField(max_length=10, default='not-issued')
     
     def __str__(self):
-        return self.name
+        return self.license_number
 
 class bluebook(models.Model):
     name=models.CharField(max_length=100, null=True)
@@ -33,7 +33,7 @@ class bluebook(models.Model):
     tax_status=models.CharField(max_length=10)
 
     def __str__(self):
-        return self.name
+        return self.book_number
 
 
 class Nationalid(models.Model):

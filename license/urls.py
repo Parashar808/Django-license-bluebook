@@ -6,7 +6,8 @@ from django.contrib import admin
 
 urlpatterns=[
 
-    path('',views.nationalid, name='nationalid'),
+    path('nationalid',views.nationalid, name='nationalid'),
+
     path('license',views.license123,name='license123'),
     path('bluebook',views.bluebook123,name='bluebook123'),
     path('nationalid',views.nationalid,name='nationalid'),
@@ -19,6 +20,9 @@ urlpatterns=[
     path('update2/<str:pk>/',views.update2,name='update2'),
     path('removea/<int:pk>', views.removea, name='removea'),
     path('removeb/<int:pk>', views.removeb, name='removeb'),
+    path('',views.login,name='login'),
+    path('login',views.login,name='login'),
+    path('logout',views.logout,name='logout')
 
 
 

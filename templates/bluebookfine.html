@@ -8,6 +8,10 @@
     <title>Create</title>
 </head>
 <body>
+    <a href="nationalid">Home page</a><br/>
+    <a  href="{% url 'logout' %}">Logout</a>
+
+
     <form action="" method="POST">
         {% csrf_token %}
         {{form}}
@@ -15,5 +19,6 @@
 
     </form>
     <a href="{% url 'show2' %}">Show fines</a>
+
 </body>
 </html>
