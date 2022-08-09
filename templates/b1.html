@@ -1,0 +1,140 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Traffic</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>
+    <navbar class="navbar">
+        <div class="container">
+            <div>
+                <img src="{% static 'images/logo.jpg' %}" alt="logo">
+            </div>
+            <div>
+                <p>The Official Portal of E-Traffic of Nepal.</p>
+                <p><b>www.e-traffic.gov.np</b></p>
+            </div>
+        </div>
+    </navbar>
+    <div>
+        <ul>
+            <li><a href="nationalid">National ID</a></li>
+            <li><a href="license">License</a></li>
+            <li><a href="bluebook">Vehicle</a></li>
+            <li><a href="create1">Penalties</a></li>
+            <li><a  href="{% url 'logout' %}">Logout</a></li>
+
+           
+        </ul>
+
+        <div class="content">
+            <section id="section7">
+                <h1>Vehicle Detail</h1>
+    {% for book in bluebook %}
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vehicle Number Plate: <span>{{book.book_number}}</span></th>
+                            <th>Vehicle Category: <span>{{book.v_category}}</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Registered Date:</td>
+                            <td>{{book.issue_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Model:</td>
+                            <td>{{book.v_model}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ownwer's Name:</td>
+                            <td>{{book.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td>{{book.address}}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact:</td>
+                            <td>{{book.contact_number}}</td>
+                        </tr>
+                        <tr>
+                            <td>Manufacture Date:</td>
+                            <td>{{book.manufacture_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Cylinder:</td>
+                            <td>{{book.no_of_cylinders}}</td>
+                        </tr>
+                        <tr>
+                            <td>HorsePower/CC:</td>
+                            <td>{{book.power}}</td>
+                        </tr>
+                        <tr>
+                            <td>Chechis Number:</td>
+                            <td>{{book.chechis_no}}</td>
+                        </tr>                        
+                        <tr>
+                            <td>Engine Number:</td>
+                            <td>{{book.engine_no}}</td>
+                        </tr>                        
+                        <tr>
+                            <td>Vehicle Color</td>
+                            <td>{{book.color}}</td>
+                        </tr>
+                        <tr>
+                            <td>Capacity (including Driver):</td>
+                            <td>{{book.capacity}}</td>
+                        </tr>
+                        <tr>
+                            <td>Engine Type:</td>
+                            <td>{{book.engine_type}}</td>
+                        </tr>
+                        <tr>
+                            <td>Use:</td>
+                            <td>{{book.use}}</td>
+                        </tr>
+                        <tr>
+                            <td>Permit For:</td>
+                            <td>{{book.permit_for}}</td>
+                        </tr>
+                    </tbody>
+    {% endfor %}
+
+                </table>
+            </section>
+        </div>
+    </div>
+    
+</body>
+<footer>
+    <div class="footer">
+        <p>CopyRight 2022 RNPD.</p>
+    </div>
+</footer>
+
+   
+    
+    
+
+       
+         <div>
+            {% for message in messages%}
+
+            <h3>{{message}}</h3>
+            {% endfor %}
+        </div>
+        
+</div>
+</div>
+</body>
+</html>
+            
+

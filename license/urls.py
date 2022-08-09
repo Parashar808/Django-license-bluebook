@@ -22,7 +22,12 @@ urlpatterns=[
     path('removeb/<int:pk>', views.removeb, name='removeb'),
     path('',views.login,name='login'),
     path('login',views.login,name='login'),
-    path('logout',views.logout,name='logout')
+    path('logout',views.logout,name='logout'),
+    path('s1',views.s1,name='s1'),
+    path('l1',views.l1,name='l1'),
+    path('b1',views.b1,name='b1')
+
+
 
 
 

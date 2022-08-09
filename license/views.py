@@ -189,42 +189,71 @@ def removeb(request, pk):
 
 @login_required(login_url="login")
 def license123(request):
-    if 'search' in request.GET:
-        search1=request.GET['search']
-        license1= license.objects.filter(name__icontains=search1)
-    else:
-        license1=license.objects.all()
-    return render(request, 'license.html',{'license':license1})
+    
+    return render(request, 'license.html')
 
 @login_required(login_url="login")
-def bluebook123(request):
-    if 'search1' in request.GET:
-        search12=request.GET['search1']
-        bluebook1= bluebook.objects.filter(name__icontains=search12)
-    else:
-        bluebook1=bluebook.objects.all()
-
+def bluebook123(request):   
     
-    return render(request, 'bluebook.html',{'bluebook':bluebook1})
+    return render(request, 'bluebook.html')
 
 @login_required(login_url="login")
 def nationalid(request):
 
 
-    if 'search' in request.GET:
-        search=request.GET['search']
-        n1 = Nationalid.objects.filter(id_number__icontains=search)
-         
+        return render(request,'nationalid.html')     
         # nationalid1= Nationalid.objects.filter(Nationalid__name__icontians=search,license__name__icontains=search,bluebook__name__icontains=search)
 
 
-    else:
-        n1= Nationalid.objects.all()
-
+    
 
         
     
 
-    return render(request,'nationalid.html',{'n1':n1})
+
+def s1(request):    
+
+    if 'search' in request.GET:
+            search=request.GET['search']
+            n1 = Nationalid.objects.filter(id_number__icontains=search)
+            return render(request,'s1.html',{'n1':n1})     
+            # nationalid1= Nationalid.objects.filter(Nationalid__name__icontians=search,license__name__icontains=search,bluebook__name__icontains=search)
+
+
+    else:
+            messages.info(request,'Not found ')        
+        
+
+            return render(request,'s1.html')
+
+
+def l1(request):    
+
+    if 'search' in request.GET:
+            search1=request.GET['search']
+            license1= license.objects.get(license_number__icontains=search1)
+            penalty1= License_Fine.objects.get(name=license1)
+            return render(request, 'l1.html',{'license':license1,'pen':penalty1})
+
+            
+    else:
+        messages.info(request,'Not found ') 
+        return render(request,'l1.html')       
+
+def b1(request):
+    if 'search' in request.GET:
+            search1=request.GET['search']
+            bluebook1= bluebook.objects.filter(book_number__icontains=search1)
+            return render(request, 'b1.html',{'bluebook':bluebook1})
+
+
+    else:
+            messages.info(request,'Not found ') 
+            return render(request,'b1.html')       
+
+
+    
+
+
 
 

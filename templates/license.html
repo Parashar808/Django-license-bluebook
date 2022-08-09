@@ -1,53 +1,60 @@
+{% load static %}
+{% static "images" as baseUrl %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        img{
-            height:300px ;
-            width:300px;
-        }
-    </style>
+    <title>E-Traffic</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
 </head>
-
 <body>
-    <a href="nationalid">Home page</a><br/>
-    <a  href="{% url 'logout' %}">Logout</a>
+    <navbar class="navbar">
+        <div class="container">
+            <div>
+                <img src="{% static 'images/logo.jpg' %}" alt="logo">
+            </div>
+            <div>
+                <p>The Official Portal of E-Traffic of Nepal.</p>
+                <p><b>www.e-traffic.gov.np</b></p>
+            </div>
+        </div>
+    </navbar>
+    <div>
+        <ul>
+            <li><a href="nationalid">National ID</a></li>
+            <li><a href="license">License</a></li>
+            <li><a href="bluebook">Vehicle</a></li>
+            <li><a href="show1">Penalties</a></li>
+            <li><a  href="{% url 'logout' %}">Logout</a></li>
 
+           
+        </ul>
 
-    <form method="get">
-        {% csrf_token  %}
+        <div class="content">
 
-        <input type="text" name="search">
+            <section id="section2">
+                <form action="l1" method="GET">
+       		 {% csrf_token  %}
+                    <h1>License Details</h1><br>
+                    <div class="form_input">
+                        <label for="search">License Number</label>
+                        <input type="text" name="search" placeholder="License Number">
+                    </div>
+                    <div class="form_input">
+                        <button type="submit">Result</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <footer>
+            <div class="footer">
+                <p>CopyRight 2022 RNPD.</p>
+            </div>
+        </footer>
+
         
-        <input type="submit" >
-
-
-    </form>     
-
-
-
-    {% for lic in license %}
-
-    <h1>{{lic.name}}</h1>
-    <p>{{lic.license_number}}</p>
-    <p>{{lic.dob}}</p>
-    <p>{{lic.issue_date}}</p>
-    <p>{{lic.expiry_date}}</p>
-    <img src="{{lic.photo.url}}"/>
-    <p>{{lic.father_name}}</p>
-    <p>{{lic.blood_group}}</p>
-
-
-
-
-    
-
-    {% endfor %}
-    
 </body>
 </html>
 

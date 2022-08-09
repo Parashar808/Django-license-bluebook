@@ -20,7 +20,7 @@ class license(models.Model):
     category=models.CharField(max_length=10,null='TRUE')
     issue_date=models.CharField(max_length=10,null='TRUE')
     expiry_date=models.CharField(max_length=10,null='TRUE')
-    issue=models.CharField(max_length=10, default='not-issued',null='TRUE')
+
     
     def __str__(self):
         return self.license_number
@@ -63,7 +63,7 @@ class Nationalid(models.Model):
     
 class License_Fine(models.Model):
     Fine_Id = models.CharField(max_length=10)
-    amount=models.CharField(max_length=10)
+    amount=models.CharField(max_length=10,default='No charges')
     name= models.OneToOneField(license,on_delete=models.CASCADE )
 
 class Bluebook_Fine(models.Model):
