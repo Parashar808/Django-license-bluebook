@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'styles/style.css' %}">
 </head>
 <body>
-    <!-- <navbar class="navbar">
+    <navbar class="navbar">
         <div class="container">
             <div>
                 <img src="{% static 'images/logo.jpg' %}" alt="logo">
@@ -26,29 +26,39 @@
             <li><a href="nationalid">National ID</a></li>
             <li><a href="license">License</a></li>
             <li><a href="bluebook">Vehicle</a></li>
-            <li><a href="show1">Penalties</a></li>
+            <li><a href="create1">Penalties</a></li>
             <li><a  href="{% url 'logout' %}">Logout</a></li>
 
            
         </ul>
 
-        <div class="content"> -->
-             <table> 
+        <div class="content">
     
-        <tr>
-            <th>National-id</th>
-            <th>Name</th>
-            <th>License Number</th>
-            <th>Bluebook Number</th>
-        </tr>
-                {% for nat in n1 %}
-           
-        <tr>
-            <td>{{nat.id_number}}</td>
-            <td>{{nat.name}}</td>
-            <td>{{nat.license_number}}</td>
-            <td>{{nat.bluebook_number}}</td>
-        </tr>
+
+    <section id="section6">
+
+        <h1 style="text-align:center ;">National-id related Details</h1>
+        {% for nat in n1 %}
+        
+        <table>
+            <tbody>
+                <tr style="border:1px solid black ;color:rgb(81, 16, 16);">
+                    <th>National-id : {{nat.id_number}}</th>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>{{nat.name}}</td>
+                </tr>
+                <tr>
+                    <td>License Number</td>
+                    <td>{{nat.license_number}}</td>
+                </tr>
+                <tr>
+                    <td>Bluebook Number</td>
+                    <td>{{nat.bluebook_number}}</td>
+                </tr>
+            </tbody> 
+    
                  {% endfor %}
 
         </table>
@@ -65,3 +75,26 @@
 </html>
             
 
+</section>
+</div>
+</div>
+
+<footer>
+    <div class="footer">
+        <p>CopyRight 2022 RNPD.</p>
+    </div>
+</footer>
+
+
+
+    <div>
+        {% for message in messages%}
+
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+    
+
+    
+</body>
+</html>
