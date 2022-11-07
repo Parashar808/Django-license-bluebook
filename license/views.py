@@ -83,7 +83,7 @@ def create1(request):
         form=FineForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/show1")
+            return redirect("/nationalid")
 
     context1={'form':form}
     return render(request,'licensefine.html',context1)
@@ -232,7 +232,7 @@ def l1(request):
     if 'search' in request.GET:
             search1=request.GET['search']
             license1= license.objects.get(license_number__icontains=search1)
-            penalty1= License_Fine.objects.get(name=license1)
+            penalty1= License_Fine.objects.get(national_id=license1)
             return render(request, 'l1.html',{'license':license1,'pen':penalty1})
 
             

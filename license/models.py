@@ -63,8 +63,8 @@ class Nationalid(models.Model):
     
 class License_Fine(models.Model):
     Fine_Id = models.CharField(max_length=10)
-    amount=models.CharField(max_length=10,default='No charges')
-    name= models.OneToOneField(license,on_delete=models.CASCADE )
+    amount=models.CharField(max_length=10)
+    national_id= models.OneToOneField(license,on_delete=models.CASCADE )
 
 class Bluebook_Fine(models.Model):
     Fine_Id = models.CharField(max_length=10)   
