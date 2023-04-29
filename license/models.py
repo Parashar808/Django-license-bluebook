@@ -20,6 +20,7 @@ class license(models.Model):
     category=models.CharField(max_length=10,null='TRUE')
     issue_date=models.CharField(max_length=10,null='TRUE')
     expiry_date=models.CharField(max_length=10,null='TRUE')
+    fine = models.CharField(max_length=1000000, null='TRUE')
 
     
     def __str__(self):
@@ -54,17 +55,17 @@ class bluebook(models.Model):
 class Nationalid(models.Model):
     
     id_number=models.CharField(max_length=20)
-    name=models.CharField(max_length=20, null=True)
-    license_number=models.ForeignKey(license, on_delete=models.CASCADE,null=True)
-    bluebook_number=models.ForeignKey(bluebook, on_delete=models.CASCADE,null=True)
+    name=models.CharField(max_length=20, null='True')
+    license_number=models.ForeignKey(license, on_delete=models.CASCADE,null='True')
+    bluebook_number=models.ForeignKey(bluebook, on_delete=models.CASCADE,null='True')
 
     def __str__(self):
         return self.name
     
 class License_Fine(models.Model):
-    Fine_Id = models.CharField(max_length=10)
-    amount=models.CharField(max_length=10)
-    national_id= models.OneToOneField(license,on_delete=models.CASCADE )
+    amount=models.CharField(max_length=10,null='True',default='0')
+    # national_id= models.OneToOneField(license,on_delete=models.CASCADE )
+    lid = models.ForeignKey(license,on_delete=models.CASCADE, null='True' )
 
 class Bluebook_Fine(models.Model):
     Fine_Id = models.CharField(max_length=10)   

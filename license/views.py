@@ -78,13 +78,20 @@ def Fine(request):
 
 @login_required(login_url="login")
 def create1(request):
+
     form=FineForm()
     if request.method == 'POST':
         form=FineForm(request.POST)
+        
         if form.is_valid():
+            newpost = form.save(commit=False)
+            l = license.objects.get(id=newpost.lid.id)
+            l.fine = newpost.amount
+            l.save()
             form.save()
-            return redirect("/nationalid")
-
+            return redirect('nationalid')
+        else:
+            print("Invalid")
     context1={'form':form}
     return render(request,'licensefine.html',context1)
 
@@ -232,8 +239,9 @@ def l1(request):
     if 'search' in request.GET:
             search1=request.GET['search']
             license1= license.objects.get(license_number__icontains=search1)
-            penalty1= License_Fine.objects.get(national_id=license1)
-            return render(request, 'l1.html',{'license':license1,'pen':penalty1})
+            # penalty1= License_Fine.objects.get(national_id=license1)
+            # return render(request, 'l1.html',{'license':license1,'pen':penalty1})
+            return render(request, 'l1.html',{'license':license1})
 
             
     else:
