@@ -1,9 +1,64 @@
 from django.shortcuts import render, redirect
 from license.models import Bluebook_Fine, License_Fine, Nationalid, license,bluebook
-from .forms import FineForm,FineForm1
+from .forms import FineForm,FineForm1,LicenseForm,BluebookForm
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+@login_required(login_url="login")
+def createLicense(request):
+    form=LicenseForm()
+    if request.method == 'POST':
+        form=LicenseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("nationalid")
+
+    context1={'form':form}
+    return render(request,'createLicense.html',context1)
+
+@login_required(login_url="login")
+def updateLicense(request, pk):
+    comp=license.objects.get(id=pk)
+    form=LicenseForm(instance=comp)
+    if request.method == 'POST':
+        form=LicenseForm(request.POST,instance=comp)
+        if form.is_valid():
+            form.save()
+            return redirect("license123")
+
+
+    context1={'form':form}
+    return render(request,'createLicense.html',context1)
+
+
+
+
+@login_required(login_url="login")
+def createBluebook(request):
+    form=BluebookForm
+    if request.method == 'POST':
+        form=BluebookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("nationalid")
+
+    context1={'form':form}
+    return render(request,'createBluebook.html',context1)
+
+@login_required(login_url="login")
+def updateBluebook(request, pk):
+    comp=bluebook.objects.get(id=pk)
+    form=BluebookForm(instance=comp)
+    if request.method == 'POST':
+        form=BluebookForm(request.POST,instance=comp)
+        if form.is_valid():
+            form.save()
+            return redirect("bluebook123")
+
+
+    context1={'form':form}
+    return render(request,'createBluebook.html',context1)
 
 
 
@@ -46,11 +101,11 @@ def login(request):
             user=auth.authenticate(username=username,password=password)
 
             if user is not None:
-                auth.login(request,user)
+                auth.login(request,user)                
                 return redirect("nationalid") 
 
             else:
-                messages.info(request,'Invalid ')
+                messages.info(request,'Invalid Credentials!!')
                 return redirect('login')
 
         else:

@@ -13,11 +13,11 @@
     <navbar class="navbar">
         <div class="container">
             <div>
-                <img src="{% static 'images/logo.jpg' %}" alt="logo">
+                <img src="{% static 'images/Ettrafficlogo.png' %}" alt="logo">
             </div>
             <div>
                 <p>The Official Portal of E-Traffic of Nepal.</p>
-                <p><b>www.e-traffic.gov.np</b></p>
+                <p><b>www.e-traffic.academacollege.edu.np</b></p>
             </div>
             <div style="display:flex;margin-left:1100px;">
                 <img src="{% static 'images/flag.gif' %}" alt="flag">
@@ -39,9 +39,14 @@
         <div class="content">
 
             <section id="section2">
-                <form action="l1" method="GET">
-       		 {% csrf_token  %}
+                <a  href="{% url 'createLicense' %}">
+                    <button>
+                      ADD LICENSE
+                    </button>
+                  </a>
+                  <form action="l1" method="GET">
                     <h1>License Details</h1><br>
+       		            {% csrf_token  %}
                     <div class="form_input">
                         <label for="search">License Number</label>
                         <input type="text" name="search" placeholder="License Number">

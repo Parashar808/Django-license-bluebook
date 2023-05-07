@@ -64,6 +64,7 @@ class Nationalid(models.Model):
     
 class License_Fine(models.Model):
     amount=models.CharField(max_length=10,null='True',default='0')
+    description=models.CharField(max_length=500,null='False')
     # national_id= models.OneToOneField(license,on_delete=models.CASCADE )
     lid = models.ForeignKey(license,on_delete=models.CASCADE, null='True' )
 

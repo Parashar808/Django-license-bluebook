@@ -25,7 +25,12 @@ urlpatterns=[
     path('logout',views.logout,name='logout'),
     path('s1',views.s1,name='s1'),
     path('l1',views.l1,name='l1'),
-    path('b1',views.b1,name='b1')
+    path('b1',views.b1,name='b1'),
+    path('createLicense',views.createLicense,name="createLicense"),
+    path('createBluebook',views.createBluebook,name="createBluebook"),
+    path('updateLicense/<int:pk>',views.updateLicense,name='updateLicense'),
+    path('updateBluebook/<int:pk>',views.updateBluebook,name='updateBluebook')
+
 
 
 

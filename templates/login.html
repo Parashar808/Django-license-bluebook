@@ -13,11 +13,11 @@
         <navbar class="navbar">
             <div class="container">
                 <div>
-                    <img src="{% static 'images/logo.jpg' %}" alt="logo">
+                    <img src="{% static 'images/Ettrafficlogo.png' %}" alt="logo">
                 </div>
                 <div>
                     <p>The Official Portal of E-Traffic of Nepal.</p>
-                    <p><b>www.e-traffic.gov.np</b></p>
+                    <p><b>www.e-traffic.academacollege.edu.np</b></p>
                 </div>
                 <div style="display:flex;margin-left:1100px;">
                     <img src="{% static 'images/flag.gif' %}" alt="flag">
@@ -43,6 +43,13 @@
                     <div class="form_input">
                         <button type="submit">LogIn</button>
                     </div>
+                    <div >
+                        {% for message in messages%}
+            
+                        <h3>{{message}}</h3>
+                        {% endfor %}
+                    </div>
+                    
                 </form>
             </section>
         </div>
@@ -52,13 +59,7 @@
             </div>
         </footer>
     
-        <!-- <div>
-            {% for message in messages%}
-
-            <h3>{{message}}</h3>
-            {% endfor %}
-        </div>
-         -->
+         
 
 
     </body>
